@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function(nums) {
+    let n = nums.length;
+    let answer = new Array(n);
+
+    // Step 1: left products
+    let leftProduct = 1;
+    for (let i = 0; i < n; i++) {
+        answer[i] = leftProduct;
+        leftProduct *= nums[i];
+    }
+
+    // Step 2: right products
+    let rightProduct = 1;
+    for (let i = n - 1; i >= 0; i--) {
+        answer[i] *= rightProduct;
+        rightProduct *= nums[i];
+    }
+
+    return answer;
+};
